@@ -1,4 +1,6 @@
-redis_config = { url: ENV['REDIS_URL'] }
+require 'sidekiq/web'
+
+redis_config = { url: Settings.redis.url }
 
 Sidekiq.configure_server do |config|
   config.redis = redis_config
