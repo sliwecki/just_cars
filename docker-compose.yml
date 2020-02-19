@@ -24,7 +24,7 @@ services:
       - 'redis:/data'
   sidekiq:
     build: .
-    command: sidekiq
+    command: sidekiq -q default -q active_storage_purge -q active_storage_analysis
     volumes:
       - '.:/app'
     env_file:

@@ -8,6 +8,11 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'sidekiq', '~> 6.0'
 gem 'config', '~> 2.2'
+gem 'virtus', '~> 1.0'
+gem 'active_storage_base64', '~> 1.1'
+gem 'oj'
+gem 'fast_jsonapi'
+gem "aws-sdk-s3", require: false
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'

@@ -1,6 +1,7 @@
 api_version: 0.0.1
 
 routes:
+  host: http://localhost:3000
   admin_namespace: xQp2l6Q7nN
 
 redis:
@@ -9,3 +10,9 @@ redis:
 sidekiq:
   username: admin
   password: Up3tj0X7Jk10
+
+aws:
+  region: eu-west-2
+  bucket: artscript-development-apps
+  access_key_id:
+  secret_access_key:

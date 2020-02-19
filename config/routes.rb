@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # user namespace
   namespace :v1 do
-    resources :offers, only: [:index, :show]
+    resources :offers, only: [:index, :show, :create]
   end
 
   # admin namespace

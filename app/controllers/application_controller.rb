@@ -5,6 +5,17 @@ class ApplicationController < ActionController::API
   end
 
   def routing_not_found
-    render json: { error: 'not_found', description: "No route matches: /#{params[:path]}" }, status: 404
+    render_error(Error::RoutingNotFound.new(params))
+  end
+
+  private
+
+  #TEMP TODO AUTH
+  def current_user
+    @current_user ||= User.first
+  end
+
+  def render_error(object)
+    render json: object, status: object.http_status
   end
 end
