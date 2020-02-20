@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include Knock::Authenticable
 
   def info
     render json: { version: Settings.api_version }
@@ -9,11 +10,6 @@ class ApplicationController < ActionController::API
   end
 
   private
-
-  #TEMP TODO AUTH
-  def current_user
-    @current_user ||= User.first
-  end
 
   def render_error(object)
     render json: object, status: object.http_status

@@ -78,6 +78,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
+    bcrypt (3.1.13)
     builder (3.2.4)
     coderay (1.1.2)
     coercible (1.0.0)
@@ -155,6 +156,7 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jmespath (1.4.0)
+    jwt (1.5.6)
     kaminari (1.2.0)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.0)
@@ -167,6 +169,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.0)
     kaminari-core (1.2.0)
+    knock (2.1.1)
+      bcrypt (~> 3.1)
+      jwt (~> 1.5)
+      rails (>= 4.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -268,11 +274,14 @@ PLATFORMS
 DEPENDENCIES
   active_storage_base64 (~> 1.1)
   aws-sdk-s3
+  bcrypt
   config (~> 2.2)
   elasticsearch-model (~> 7)
   elasticsearch-rails (~> 7)
   fast_jsonapi
+  jwt
   kaminari
+  knock
   listen (>= 3.0.5, < 3.2)
   oj
   pg (>= 0.18, < 2.0)

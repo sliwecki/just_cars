@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # user namespace
   namespace :v1 do
+    post 'user_token' => 'user_token#create'
     resources :offers, only: [:index, :show, :create]
   end
 

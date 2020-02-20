@@ -1,6 +1,8 @@
 module V1
   class OffersController < ApplicationController
 
+    before_action :authenticate_user
+
     def index
       render json: Offers::OfferSerializer.new(offers, is_collection: true).serialized_json
     end

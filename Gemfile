@@ -16,6 +16,9 @@ gem "aws-sdk-s3", require: false
 gem 'kaminari'
 gem 'elasticsearch-model', '~> 7'
 gem 'elasticsearch-rails', '~> 7'
+gem 'bcrypt'
+gem 'jwt'
+gem 'knock'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
