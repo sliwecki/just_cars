@@ -13,6 +13,9 @@ gem 'active_storage_base64', '~> 1.1'
 gem 'oj'
 gem 'fast_jsonapi'
 gem "aws-sdk-s3", require: false
+gem 'kaminari'
+gem 'elasticsearch-model', '~> 7'
+gem 'elasticsearch-rails', '~> 7'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'

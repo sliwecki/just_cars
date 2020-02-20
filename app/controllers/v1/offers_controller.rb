@@ -11,7 +11,7 @@ module V1
 
     def create
       form = Offers::CreateOfferForm.new(params_for_create)
-      result = Offers::CreateOfferService.call(form: form, user: current_user)
+      result = Offers::CreateOffer.new(form: form, user: current_user).call
       if result.error?
         render_error(result.object)
       else
@@ -27,11 +27,11 @@ module V1
     end
 
     def offer
-      @offer ||= current_user.offers.find(params[:id])
+      @offer ||= Offers::GetOffer.new(params: params, user: current_user).call
     end
 
     def offers
-      @offers ||= current_user.offers
+      @offers ||= Offers::GetOffers.new(params: params, user: current_user).call
     end
   end
 end

@@ -32,6 +32,38 @@ services:
     depends_on:
       - 'postgres'
       - 'redis'
+  elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch:7.5.2
+      # container_name: es01
+      environment:
+        - discovery.type=single-node
+        - node.name=es01
+        - cluster.name=justcars-docker-cluster
+        # - discovery.seed_hosts=es02,es03
+        - bootstrap.memory_lock=true
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        # - xpack.security.enabled=false
+        # - xpack.monitoring.enabled=false
+        # - xpack.graph.enabled=false
+        # - xpack.watcher.enabled=false
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      volumes:
+        - 'elasticsearch:/usr/share/elasticsearch/data'
+      ports:
+        - 9200:9200
+      # networks:
+      #   - elastic
 volumes:
   redis:
+    driver: local
   postgres:
+    driver: local
+  elasticsearch:
+    driver: local
+
+# networks:
+#   elastic:
+#     driver: bridge

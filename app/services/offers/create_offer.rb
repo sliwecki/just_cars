@@ -1,5 +1,6 @@
 module Offers
-  class CreateOfferService < ApplicationService
+  class CreateOffer
+    include Concerns::Service
 
     def initialize(attrs = {})
       @form = attrs.fetch(:form)
@@ -9,7 +10,7 @@ module Offers
     def call
       return build_result(validation_error) if form.invalid?
 
-      offer = @user.offers.create(form.to_hash)
+      offer = user.offers.create(form.to_hash)
       offer.image.attach(data: form.image)
       build_result(offer)
     end
