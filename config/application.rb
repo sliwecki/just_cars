@@ -7,7 +7,6 @@ require "active_job/railtie"
 require "active_record/railtie"
 require "active_storage/engine"
 require "action_controller/railtie"
-require "action_view/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -31,5 +30,7 @@ module JustCars
     config.active_job.queue_adapter = :sidekiq
 
     routes.default_url_options[:host] = Settings.routes.host
+
+    config.railties_order = [:all, :main_app]
   end
 end

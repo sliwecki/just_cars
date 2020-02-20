@@ -19,7 +19,7 @@ module Elasticsearch
 
       private
 
-      attr_reader :params, :sort_by, :sort_order, :page, :per_page
+      attr_reader :params, :sort_by, :sort_order
 
       def collection_class_name
         raise 'No implementation'

@@ -1,20 +1,18 @@
-module Concerns
-  module Service
-    extend ActiveSupport::Concern
+module Service
+  extend ActiveSupport::Concern
 
-    included do
+  included do
 
-      private
+    private
 
-      attr_reader :form, :params, :user
+    attr_reader :form, :params, :user
 
-      def validation_error
-        Error::ValidationFailed.new(form.errors)
-      end
+    def validation_error
+      Error::ValidationFailed.new(form.errors)
+    end
 
-      def build_result(object)
-        ServiceResult.new(object)
-      end
+    def build_result(object)
+      ServiceResult.new(object)
     end
   end
 end

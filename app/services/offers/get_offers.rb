@@ -1,6 +1,6 @@
 module Offers
   class GetOffers
-    include Concerns::Service
+    include Service
 
     def initialize(attrs = {})
       @params = attrs.fetch(:params)

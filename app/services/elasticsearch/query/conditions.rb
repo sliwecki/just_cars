@@ -11,11 +11,11 @@ module Elasticsearch
       end
 
       def title
-        { 'match_phrase' => { 'title' => params[:title].downcase }} if params[:title]
+        { 'match_phrase_prefix' => { 'title' => params[:title].downcase }} if params[:title]
       end
 
       def description
-        { 'prefix' => { 'description' => params[:description].downcase }} if params[:description]
+        { 'match_phrase_prefix' => { 'description' => params[:description].downcase }} if params[:description]
       end
 
       def price_gteq
@@ -40,14 +40,8 @@ module Elasticsearch
 
       def sort
         case sort_by
-        when :id
-          { 'id' => { 'order' => sort_order }}
-        when :title
-          { 'title' => { 'order' => sort_order, 'missing' => null_position }, 'id' => { 'order' => sort_order }}
-        when :description
-          { 'description' => { 'order' => sort_order, 'missing' => null_position }, 'id' => { 'order' => sort_order }}
-        when :price
-          { 'price' => { 'order' => sort_order, 'missing' => null_position }, 'id' => { 'order' => sort_order }}
+        when :title, :description, :price
+          { sort_by => { 'order' => sort_order, 'missing' => null_position }, 'id' => { 'order' => sort_order }}
         else
           { 'id' => { 'order' => sort_order }}
         end

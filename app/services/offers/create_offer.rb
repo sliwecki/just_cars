@@ -1,6 +1,6 @@
 module Offers
   class CreateOffer
-    include Concerns::Service
+    include Service
 
     def initialize(attrs = {})
       @form = attrs.fetch(:form)
