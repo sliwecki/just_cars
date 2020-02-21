@@ -1,5 +1,5 @@
 # Just Cars API
-#
+
 ### Docker services:
   - api (main)
   - postgres (database)
@@ -11,10 +11,11 @@
  - uses Elasticsearch for search offers
  - uses simple JWT token authentication
  - allows to store images in AWS S3
+ - price is implemented as a Integer(cents) [1000 == 10.00 zl]
  - ...
  - TODO Rspec
 
-#
+
 ## Start-up
 ```sh
 $ docker-compose build
@@ -32,11 +33,9 @@ This command create user, its offer and index in elasticsearch.
 ```sh
 $ docker-compose run api rake db:create db:migrate db:seed
 ```
-#
-#
-#
+
 # Requests
-#
+
 ### Create token
 ```sh
 curl -X POST http://localhost:3000/v1/user_token \
@@ -54,7 +53,7 @@ Response
   "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODIzMjc5NjYsInN1YiI6N30.wlRZ4Xd1fLUBVVELPS4GLWNZx-FtAtijU2LWeLuOzq4"
 }
 ```
-#
+
 ### Create offer
 ```sh
 curl -X POST http://localhost:3000/v1/offers \
@@ -82,7 +81,7 @@ Response
     }
 }
 ```
-#
+
 ### Get offer
 ```sh
 curl -X GET http://localhost:3000/v1/offers/10 \
@@ -104,7 +103,7 @@ Response
     }
 }
 ```
-#
+
 ### Get offers
 ```sh
 curl -X GET http://localhost:3000/v1/offers \
@@ -138,7 +137,7 @@ Response
     ]
 }
 ```
-#
+
 ### Search params
 
 API allows to use these params for endpoint GET http://localhost:3000/v1/offers
@@ -160,6 +159,4 @@ API allows to use these params for endpoint GET http://localhost:3000/v1/offers
 | ------ |------| ------ |
 | per_page  | default: 30, min: 1, max: 100 | ?per_page=50 |
 | page | default: 1 | ?page=4 |
-#
-#
-#
+
